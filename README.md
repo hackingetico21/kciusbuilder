@@ -1,3 +1,6 @@
+## Logo
+![Logo del proyecto](assets/images/ss1.jpeg)
+
 # kciusbuilder
 Herramienta hecha en python para generacion de contenedores Docker con vulnerabilidades de manera automatica.
 
