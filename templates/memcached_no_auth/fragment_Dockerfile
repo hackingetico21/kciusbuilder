@@ -1,0 +1,4 @@
+RUN apt-get update && apt-get install -y memcached
+
+RUN sed -i 's/-l 127.0.0.1/-l 0.0.0.0/' /etc/memcached.conf
+

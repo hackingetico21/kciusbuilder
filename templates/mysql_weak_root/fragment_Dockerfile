@@ -1,0 +1,7 @@
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
+
+COPY mysql_weak_root/init.sql /init.sql
+COPY mysql_weak_root/weak_root.sh /weak_root.sh
+
+RUN chmod +x /weak_root.sh
+

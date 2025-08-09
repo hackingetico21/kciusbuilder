@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>XSS Demo</title>
+</head>
+<body>
+    <h1>Reflected XSS Demo</h1>
+    <form action="/" method="get">
+        <input type="text" name="input" />
+        <input type="submit" value="Submit" />
+    </form>
+    <p>You wrote: <span id="output"></span></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const input = params.get('input');
+        if (input) {
+            // Vulnerable to XSS since no sanitization
+            document.getElementById('output').innerHTML = input;
+        }
+    </script>
+</body>
+</html>
+

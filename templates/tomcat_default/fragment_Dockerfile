@@ -1,0 +1,13 @@
+RUN apt-get update && \
+    apt-get install -y wget openjdk-11-jdk && \
+    wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.108/bin/apache-tomcat-9.0.108.tar.gz -O /tmp/tomcat.tar.gz && \
+    tar xzf /tmp/tomcat.tar.gz -C /opt && \
+    mv /opt/apache-tomcat-9.0.108 /opt/tomcat && \
+    rm /tmp/tomcat.tar.gz
+
+COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+
+COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+
+RUN chmod +x /opt/tomcat/bin/*.sh
+

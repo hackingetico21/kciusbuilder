@@ -1,0 +1,4 @@
+RUN apt-get update && apt-get install -y redis-server
+
+COPY redis_no_auth/redis.conf /etc/redis/redis.conf
+

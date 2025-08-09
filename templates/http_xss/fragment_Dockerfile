@@ -1,0 +1,4 @@
+RUN apt-get update && apt-get install -y apache2
+
+COPY http_xss/index.html /var/www/html/index.html
+

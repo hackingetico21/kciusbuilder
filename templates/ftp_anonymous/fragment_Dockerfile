@@ -1,0 +1,8 @@
+RUN apt-get update && apt-get install -y vsftpd && \
+    mkdir -p /var/ftp/pub && \
+    echo "Archivo de prueba FTP" > /var/ftp/pub/readme.txt && \
+    (id -u ftp >/dev/null 2>&1 || useradd -d /var/ftp ftp) && \
+    chown -R ftp:ftp /var/ftp
+
+COPY ftp_anonymous/vsftpd.conf /etc/vsftpd.conf
+

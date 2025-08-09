@@ -1,0 +1,2 @@
+vsftpd /etc/vsftpd.conf &
+

@@ -1,0 +1,13 @@
+RUN apt-get update && apt-get install -y apache2 php php-mysqli mariadb-server && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY index.php /var/www/html/index.php
+COPY init.sql /init.sql
+
+RUN service mariadb start && \
+    mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '';" && \
+    mysql -u root < /init.sql && \
+    service mariadb stop
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
